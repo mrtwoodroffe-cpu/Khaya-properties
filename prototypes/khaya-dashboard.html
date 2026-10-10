@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khaya Properties — Seller dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F1EC;--card:#FBFAF7;--ink:#14201B;--mut:#666B64;--g:#0B2B24;--p:#0B2B24;--au:#B58B3E;--line:#DDD8CC;--btnt:#F3EFE4;--red:#b3392c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0A1311;--card:#111E1A;--ink:#EEEAE0;--mut:#9AA39C;--g:#D5B06A;--p:#D5B06A;--au:#D5B06A;--line:#233029;--btnt:#0A1311;--red:#ef8a7d}}
+:root[data-theme=dark]{--bg:#0A1311;--card:#111E1A;--ink:#EEEAE0;--mut:#9AA39C;--g:#D5B06A;--p:#D5B06A;--au:#D5B06A;--line:#233029;--btnt:#0A1311;--red:#ef8a7d}
+*{box-sizing:inherit}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Figtree,system-ui,sans-serif;padding-bottom:40px}
+h1,h2,h3,.logo{font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:-.02em;margin:0}
+button{font:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--au);outline-offset:2px}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;max-width:980px;margin:auto}
+.logo{font-weight:800;font-size:1.25rem;color:var(--g)}.logo i{font-style:normal;color:var(--au)}
+.btn{border:0;border-radius:999px;padding:10px 18px;font-weight:600;background:var(--p);color:var(--btnt)}
+.btn.o{background:transparent;border:1.5px solid var(--line);color:var(--ink)}.btn.s{padding:7px 12px;font-size:.85rem}
+.btn.d{background:transparent;border:1.5px solid #c0392b;color:#c0392b}
+h1{font-size:clamp(1.8rem,6vw,2.6rem);line-height:1.05;margin:6px 0 4px}
+.sm{color:var(--mut);font-size:.9rem}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0}
+@media(min-width:700px){.stats{grid-template-columns:repeat(4,1fr)}}
+.st{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
+.st b{font-family:'Cormorant Garamond';font-size:1.9rem;display:block;line-height:1.1}
+.tabs{display:flex;gap:6px;background:var(--card);border:1px solid var(--line);padding:4px;border-radius:999px;width:fit-content;max-width:100%;overflow-x:auto;margin-bottom:14px}
+.tabs button{border:0;background:none;color:var(--mut);padding:8px 14px;border-radius:999px;font-weight:600;white-space:nowrap}
+.tabs button[aria-selected=true]{background:var(--g);color:var(--btnt)}
+.row{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;display:grid;grid-template-columns:76px 1fr;gap:14px;margin-bottom:12px}
+.th{width:76px;height:76px;border-radius:14px;display:grid;place-items:center}
+.th svg{width:38px}
+.badge{display:inline-block;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--bg);margin-right:6px}
+.badge.act{background:color-mix(in srgb,var(--g) 18%,var(--card));color:var(--g)}.badge.pro{background:var(--au);color:#1B1F1D}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin:6px 0 10px}
+.acts{display:flex;flex-wrap:wrap;gap:6px;grid-column:1/-1}
+.sec{display:grid;gap:16px;margin-top:26px}@media(min-width:800px){.sec{grid-template-columns:1.2fr 1fr}}
+.pan{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px}
+.msg{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line)}.msg:first-of-type{border-top:0}
+.av{width:38px;height:38px;border-radius:50%;background:var(--p);color:var(--btnt);display:grid;place-items:center;font-weight:700;flex:none}
+.un{width:9px;height:9px;border-radius:50%;background:var(--au);margin-left:auto;flex:none;margin-top:6px}
+dialog{border:0;border-radius:26px;padding:20px;max-width:520px;width:calc(100% - 24px);background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(10,20,16,.6)}
+.x{float:right;border:0;background:var(--bg);color:var(--ink);width:36px;height:36px;border-radius:50%}
+.bars{display:flex;align-items:end;gap:8px;height:120px;margin:14px 0 6px}
+.bars div{flex:1;background:var(--p);border-radius:8px 8px 0 0;min-height:4px;transition:height .3s}
+.kp{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}.kp div{background:var(--bg);border-radius:12px;padding:10px}.kp b{font-size:1.2rem;display:block}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:24px;background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:999px;display:none;z-index:50}
+.empty{text-align:center;padding:30px 10px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+h1,h2,h3,.logo,.st b{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+.logo{font-weight:700;font-size:1.65rem;letter-spacing:.01em;color:var(--ink)}
+h1{font-weight:600;letter-spacing:-.01em;font-size:clamp(2.2rem,7vw,3.2rem)}
+header{border-bottom:1px solid var(--line)}
+.btn{border-radius:12px;letter-spacing:.01em}.btn.s{padding:7px 13px}
+.btn.o{border:1px solid var(--line)}
+.st,.row,.it,.pan,.pkc{border-radius:16px}.st b{font-weight:600;font-size:2.2rem}
+.th{border-radius:10px}.badge{border-radius:8px}
+.tabs{border-radius:13px}.tabs button{border-radius:9px}
+.bars div{background:var(--au);border-radius:4px 4px 0 0}
+.av{background:var(--g)}.un{background:var(--au)}
+.flags{border-left-color:var(--au)}
+dialog{border-radius:22px;border:1px solid var(--au)}
+.x{border:1px solid var(--line);background:transparent}
+.btn.d{border:1px solid var(--red);color:var(--red)}
+</style></head><body>
+<header><div class="logo">Khaya<i>.</i>Properties</div><button class="btn" onclick="toast('Opens the 4-step listing flow')">+ List property</button></header>
+<main class="wrap">
+<h1>Your listings</h1><p class="sm">Welcome back, Thando. Here is how your properties are performing.</p>
+<div class="stats" id="stats"></div>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div id="list"></div>
+<div class="sec">
+<div class="pan"><h3>Enquiries</h3><p class="sm">Messages from buyers and tenants. Contact details stay private.</p><div id="msgs"></div></div>
+<div class="pan"><h3>Packages</h3><p class="sm">Upgrade a listing to be seen first. Promoted listings are always labelled.</p>
+<p><b>Standard R99</b> · 30 days<br><b>Featured R199</b> · featured placement<br><b>Premium R399</b> · top placement and homepage</p></div></div>
+</main>
+<dialog id="dlg"><div id="dbody"></div></dialog><div id="toast" role="status"></div>
+<script>
+const $=s=>document.querySelector(s),R=n=>'R'+n.toLocaleString('en-ZA');
+const pal=[['#2d5a4e','#9CC5B5'],['#5B3F8C','#C9B8EA'],['#8a6a2c','#E8CF98'],['#27414f','#9DBBCB']];
+let L=[
+{id:1,t:'4 Bedroom House, Sandton',p:1850000,s:'active',pk:'Premium',days:21,v:[42,58,61,87,120,96,134],e:11,w:19,ph:14,f:23},
+{id:2,t:'2 Bedroom Apartment, Umhlanga',p:14500,s:'active',pk:'Standard',days:9,v:[10,14,9,22,18,25,30],e:4,w:6,ph:3,f:8},
+{id:3,t:'3 Bedroom Townhouse, Midrand',p:1695000,s:'pending',pk:'Featured',days:30,v:[0,0,0,0,0,0,0],e:0,w:0,ph:0,f:0},
+{id:4,t:'Student Studio, Gqeberha',p:4800,s:'expired',pk:'Standard',days:0,v:[8,6,5,3,2,1,0],e:2,w:3,ph:1,f:2},
+{id:5,t:'Vacant Plot, Ballito',p:950000,s:'paused',pk:'Standard',days:17,v:[12,9,0,0,0,0,0],e:1,w:2,ph:0,f:3}];
+const M=[['Lerato M.','Hi, is the Sandton house still available?','Sandton',1],['Sipho N.','Can I view the flat on Saturday?','Umhlanga',1],['Aisha K.','Thanks, I will send my proof of income.','Umhlanga',0]];
+let tab='active';const TABS=[['active','Active'],['pending','Pending'],['paused','Paused'],['expired','Expired']];
+const sum=k=>L.reduce((a,x)=>a+(typeof x[k]==='number'?x[k]:x.v.reduce((q,w)=>q+w,0)),0);
+function stats(){const c=s=>L.filter(x=>x.s===s).length;
+$('#stats').innerHTML=[['Active listings',c('active')],['Pending review',c('pending')],['Total views',L.reduce((a,x)=>a+x.v.reduce((q,w)=>q+w,0),0)],['Favourites',sum('f')]].map(([n,v])=>`<div class="st"><b>${v}</b><span class="sm">${n}</span></div>`).join('')}
+function tabs(){$('#tabs').innerHTML=TABS.map(([k,n])=>`<button role="tab" aria-selected="${k===tab}" onclick="tab='${k}';draw()">${n} (${L.filter(x=>x.s===k).length})</button>`).join('')}
+function row(x){const [a,b]=pal[x.id%4];const st={active:'Active',pending:'Pending review',paused:'Paused',expired:'Expired'}[x.s];
+const tv=x.v.reduce((q,w)=>q+w,0);
+return `<article class="row"><div class="th" style="background:linear-gradient(135deg,${a},${b})"><svg viewBox="0 0 64 56" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"><path d="M6 28 32 6l26 22M14 24v26h36V24"/></svg></div>
+<div><span class="badge ${x.s==='active'?'act':''}">${st}</span>${x.pk!=='Standard'?`<span class="badge pro">${x.pk}</span>`:''}<h3 style="font-size:1.1rem;margin-top:6px">${x.t}</h3>
+<div class="meta sm"><span>${R(x.p)}</span><span>${tv} views</span><span>${x.e} enquiries</span><span>${x.f} saved</span>${x.s==='active'?`<span>${x.days} days left</span>`:''}</div></div>
+<div class="acts"><button class="btn s o" onclick="ana(${x.id})">Analytics</button><button class="btn s o" onclick="toast('Edit opens the listing form')">Edit</button>
+${x.s==='active'?`<button class="btn s o" onclick="set(${x.id},'paused','Listing paused')">Pause</button>`:''}${x.s==='paused'?`<button class="btn s" onclick="set(${x.id},'active','Listing resumed')">Resume</button>`:''}
+${x.s==='expired'||x.s==='active'?`<button class="btn s" onclick="renew(${x.id})">Renew</button>`:''}
+${x.pk==='Standard'&&x.s!=='expired'?`<button class="btn s" onclick="up(${x.id})">Upgrade</button>`:''}
+<button class="btn s d" onclick="del(${x.id})">Delete</button></div></article>`}
+function draw(){stats();tabs();const r=L.filter(x=>x.s===tab);$('#list').innerHTML=r.length?r.map(row).join(''):'<div class="pan empty"><b>Nothing here yet</b><p class="sm">Listings in this state will show up here.</p></div>'}
+function set(id,s,m){L.find(x=>x.id===id).s=s;toast(m);draw()}
+function renew(id){const x=L.find(y=>y.id===id);x.s='pending';x.days=30;toast('Renewal payment confirmed. Back in review.');tab='pending';draw()}
+function up(id){L.find(x=>x.id===id).pk='Featured';toast('Upgraded to Featured for R100 more');draw()}
+function del(id){if(confirm('Delete this listing? This cannot be undone.')){L=L.filter(x=>x.id!==id);toast('Listing deleted');draw()}}
+function ana(id){const x=L.find(y=>y.id===id),mx=Math.max(...x.v,1);
+$('#dbody').innerHTML=`<button class="x" onclick="dlg.close()" aria-label="Close">✕</button><h3>${x.t}</h3><p class="sm">Views, last 7 days</p>
+<div class="bars" role="img" aria-label="Daily views">${x.v.map(v=>`<div style="height:${v/mx*100}%" title="${v}"></div>`).join('')}</div>
+<div class="sm" style="display:flex;justify-content:space-between"><span>7 days ago</span><span>Today</span></div>
+<div class="kp"><div><b>${x.v.reduce((q,w)=>q+w,0)}</b>Views</div><div><b>${x.e}</b>Enquiries</div><div><b>${x.w}</b>WhatsApp clicks</div><div><b>${x.ph}</b>Phone clicks</div><div><b>${x.f}</b>Favourites</div></div>`;dlg.showModal()}
+const dlg=$('#dlg');
+$('#msgs').innerHTML=M.map(m=>`<div class="msg"><div class="av">${m[0][0]}</div><div><b>${m[0]}</b><div class="sm">${m[1]}</div><div class="sm">Re: ${m[2]}</div></div>${m[3]?'<span class="un" aria-label="Unread"></span>':''}</div>`).join('');
+function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(e.t);e.t=setTimeout(()=>e.style.display='none',2400)}
+draw();
+</script></body></html>

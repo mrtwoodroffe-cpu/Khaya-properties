@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-ZA"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Property for sale and to rent in Sandton | Khaya Properties</title>
+<meta name="description" id="md" content="Browse houses, apartments and more in Sandton on Khaya Properties.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F1EC;--card:#FBFAF7;--ink:#14201B;--mut:#666B64;--em:#0B2B24;--emt:#F3EFE4;--p:#8A6A2C;--au:#B58B3E;--line:#DDD8CC;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0A1311;--card:#111E1A;--ink:#EEEAE0;--mut:#9AA39C;--em:#D5B06A;--emt:#0A1311;--p:#D5B06A;--au:#D5B06A;--line:#233029}}
+:root[data-theme=dark]{--bg:#0A1311;--card:#111E1A;--ink:#EEEAE0;--mut:#9AA39C;--em:#D5B06A;--emt:#0A1311;--p:#D5B06A;--au:#D5B06A;--line:#233029}
+*{box-sizing:inherit}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Figtree,system-ui,sans-serif}
+h1,h2,h3,.logo,.pr{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;margin:0}
+a{color:inherit}button{font:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--au);outline-offset:2px}
+.wrap{max-width:1050px;margin:auto;padding:0 18px}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line)}
+.logo{font-weight:700;font-size:1.55rem}.logo i{font-style:normal;color:var(--au)}
+.btn{border:0;border-radius:12px;padding:10px 18px;font-weight:600;background:var(--em);color:var(--emt);text-decoration:none;display:inline-block}
+.bc{font-size:.85rem;color:var(--mut);padding:16px 0 0}.bc a{text-decoration:none}
+.hero{padding:10px 0 8px}h1{font-size:clamp(2.4rem,8vw,4.2rem);font-weight:600;line-height:1;letter-spacing:-.01em}
+.lead{max-width:40em;color:var(--mut);font-size:1.08rem;margin:14px 0}
+.st{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.st div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 16px}.st b{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;display:block;line-height:1.1}
+.tabs{display:inline-flex;gap:4px;background:var(--card);border:1px solid var(--line);padding:4px;border-radius:13px;margin:10px 0 14px}
+.tabs button{border:0;background:none;padding:8px 16px;border-radius:9px;color:var(--mut);font-weight:600}
+.tabs button[aria-pressed=true]{background:var(--em);color:var(--emt)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chips a{border:1px solid var(--line);border-radius:10px;padding:6px 13px;text-decoration:none;font-size:.9rem;background:var(--card)}.chips a:hover{border-color:var(--au)}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:border-color .25s,transform .25s}.card:hover{border-color:var(--au);transform:translateY(-3px)}
+.ph{height:200px;position:relative;display:grid;place-items:center}
+.ph:before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,15,12,.65),transparent 60%)}
+.ph svg{width:74px;opacity:.8;position:relative}
+.pr{position:absolute;left:16px;bottom:10px;color:#fff;font-weight:600;font-size:1.9rem;z-index:1}
+.cb{padding:14px 16px 16px}.tg{font-size:.74rem;font-weight:700;letter-spacing:.06em;color:var(--p)}
+.sm{color:var(--mut);font-size:.9rem}.ok{color:var(--p);font-weight:600}
+h2{font-size:2rem;font-weight:600;margin:42px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:8px}summary{font-weight:600;cursor:pointer}
+.safe{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--au);border-radius:14px;padding:16px 20px;margin-top:36px}
+.url{font-family:ui-monospace,Menlo,monospace;font-size:.82rem;color:var(--mut);word-break:break-all}
+footer{padding:36px 18px;color:var(--mut);font-size:.85rem;max-width:1050px;margin:auto}footer a{margin-right:12px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<header><a class="logo" href="#" style="text-decoration:none">Khaya<i>.</i>Properties</a><a class="btn" href="#">List property</a></header>
+<main class="wrap">
+<nav class="bc" aria-label="Breadcrumb"><a href="#">Home</a> › <a href="#">Property</a> › <span id="bp"></span> › <b id="bc"></b></nav>
+<div class="hero"><h1 id="h1"></h1><p class="lead" id="lead"></p>
+<div class="url" id="url"></div>
+<div class="st" id="st"></div></div>
+<div class="tabs" role="group" aria-label="Mode"><button aria-pressed="true" data-m="sale">For sale</button><button aria-pressed="false" data-m="rent">To rent</button></div>
+<div class="grid" id="grid"></div>
+<h2>Popular property types</h2><div class="chips" id="types"></div>
+<h2>Other areas</h2><div class="chips" id="areas"></div>
+<h2>Questions about <span id="q"></span></h2><div id="faq"></div>
+<div class="safe"><b>Stay safe.</b> <span class="sm">Never send money before you have viewed a property and confirmed the seller. Khaya Properties is a marketplace: listings are published by independent owners, landlords, agents and developers, and we do not own or represent them. Sample data shown on this page.</span></div>
+</main>
+<footer><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Listing rules</a><a href="#">Safety centre</a><a href="#">Contact</a></footer>
+<script type="application/ld+json" id="ld"></script>
+<script>
+const $=s=>document.querySelector(s);
+const CT=[['sandton','Sandton','Gauteng',2.6,'Sandton is Johannesburg\u2019s business and lifestyle hub, known for secure estates, high-rise apartments and easy access to the Gautrain.'],
+['johannesburg','Johannesburg','Gauteng',1.5,'Johannesburg offers everything from inner-city apartments to leafy suburban family homes across the north, south and west.'],
+['midrand','Midrand','Gauteng',1.7,'Midrand sits midway between Johannesburg and Pretoria, popular with families and commuters for its estates and townhouse complexes.'],
+['pretoria','Pretoria','Gauteng',1.4,'Pretoria combines established suburbs, university areas and modern estates, with a wide range of homes to buy or rent.'],
+['cape-town','Cape Town','Western Cape',3.2,'Cape Town ranges from Atlantic Seaboard apartments to Southern Suburbs family homes and Winelands-edge estates.'],
+['durban','Durban','KwaZulu-Natal',1.6,'Durban offers coastal apartments, Berea and Morningside homes, and growing suburbs towards the north coast.'],
+['umhlanga','Umhlanga','KwaZulu-Natal',2.8,'Umhlanga is a sought-after seaside node with modern apartments, beachfront living and secure estates.'],
+['ballito','Ballito','KwaZulu-Natal',2.3,'Ballito on the Dolphin Coast is popular for lifestyle estates, holiday homes and family living by the sea.'],
+['gqeberha','Gqeberha','Eastern Cape',1.2,'Gqeberha offers relaxed coastal living, student accommodation near the university and affordable family homes.'],
+['bloemfontein','Bloemfontein','Free State',1.0,'Bloemfontein is known for good value homes, established suburbs and strong rental demand around its universities.'],
+['polokwane','Polokwane','Limpopo',1.0,'Polokwane is the commercial centre of Limpopo, with growing demand for houses, townhouses and commercial property.'],
+['mbombela','Mbombela','Mpumalanga',1.1,'Mbombela (Nelspruit) gives access to the Lowveld, with homes, farms and lifestyle properties near the Kruger region.']];
+const TY=['Houses','Apartments','Townhouses','Penthouses','Vacant land','Farms','Commercial property','Student accommodation','New developments','Rent-to-buy'];
+const TP=[['Family House',4,3,1.0,'House'],['Modern Apartment',2,2,.55,'Apartment'],['Townhouse in Complex',3,2,.8,'Townhouse'],['Garden Flat',1,1,.35,'Apartment'],['Executive Home',5,4,1.9,'House'],['Penthouse',3,3,2.4,'Penthouse']];
+const pal=[['#2d5a4e','#9CC5B5'],['#4b3a78','#BDAEE0'],['#8a6a2c','#E8CF98'],['#27414f','#9DBBCB']];
+const R=n=>'R'+Math.round(n).toLocaleString('en-ZA');
+let mode='sale',slug=(location.hash||'#sandton').slice(1);
+const city=()=>CT.find(c=>c[0]===slug)||CT[0];
+const lst=c=>TP.map((t,i)=>{const rent=mode==='rent',base=c[3]*1e6*t[3];const p=rent?Math.round(base/190/100)*100:Math.round(base/5e4)*5e4;return{t:t[0],b:t[1],ba:t[2],ty:t[4],p,i,v:(i+c[3]*3)%3!==0,s:['Estate Agent','Private Owner','Landlord','Developer'][i%4]}});
+const house='<svg viewBox="0 0 64 56" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"><path d="M6 28 32 6l26 22M14 24v26h36V24"/></svg>';
+function draw(){const c=city(),n=c[1],L=lst(c),m=mode==='sale'?'for sale':'to rent',avg=L.reduce((a,x)=>a+x.p,0)/L.length;
+document.title=`Property ${m} in ${n}, ${c[2]} | Khaya Properties`;
+$('#md').content=`Browse ${L.length} sample ${mode==='sale'?'homes for sale':'rentals'} in ${n}, ${c[2]}. Houses, apartments and more, direct from owners, landlords, agents and developers.`;
+$('#bp').textContent=c[2];$('#bc').textContent=n;$('#q').textContent=n;
+$('#h1').textContent=`Property ${m} in ${n}`;$('#lead').textContent=c[4];
+$('#url').textContent=`/property/${mode==='sale'?'for-sale':'to-rent'}/${c[0]}-${c[2].toLowerCase().replace(/ /g,'-')}`;
+$('#st').innerHTML=`<div><b>${L.length}</b><span class="sm">sample listings</span></div><div><b>${R(avg)}${mode==='rent'?'/mo':''}</b><span class="sm">sample average</span></div><div><b>${L.filter(x=>x.v).length}</b><span class="sm">verified sellers</span></div>`;
+$('#grid').innerHTML=L.map(x=>{const [a,b]=pal[x.i%4];return `<article class="card"><div class="ph" style="background:linear-gradient(135deg,${a},${b})">${house}<div class="pr">${R(x.p)}${mode==='rent'?' /mo':''}</div></div><div class="cb"><div class="tg">${mode==='sale'?'FOR SALE':'TO RENT'}</div><b>${x.b} Bedroom ${x.ty}</b><div class="sm">${x.b} bed · ${x.ba} bath · ${n}</div><div class="sm">${x.s}${x.v?' <span class="ok">Verified ✓</span>':''}</div></div></article>`}).join('');
+$('#types').innerHTML=TY.map(t=>`<a href="#${slug}">${t} in ${n}</a>`).join('');
+$('#areas').innerHTML=CT.filter(x=>x[0]!==slug).map(x=>`<a href="#${x[0]}">${x[1]}</a>`).join('');
+$('#faq').innerHTML=[[`How much does it cost to ${mode==='sale'?'buy':'rent'} in ${n}?`,`Prices vary a lot by suburb and property type. Use the filters on Khaya Properties to compare current listings; the figures on this page are sample data.`],[`Can I deal directly with the owner?`,`Yes. Many listings are from private owners and landlords, and you can message sellers directly through Khaya. Always view the property and verify the seller before paying anything.`],[`What does the Verified badge mean?`,`It means our team checked the seller's details. It does not mean the property itself has been legally verified.`]].map(([a,b])=>`<details><summary>${a}</summary><p class="sm">${b}</p></details>`).join('');
+$('#ld').textContent=JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home'},{'@type':'ListItem',position:2,name:c[2]},{'@type':'ListItem',position:3,name:n}]});
+document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===mode))}
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;draw()});
+addEventListener('hashchange',()=>{slug=location.hash.slice(1);draw();scrollTo(0,0)});
+draw();
+</script></body></html>

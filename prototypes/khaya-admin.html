@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khaya Properties — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F1EC;--card:#FBFAF7;--ink:#14201B;--mut:#666B64;--g:#0B2B24;--p:#0B2B24;--au:#B58B3E;--line:#DDD8CC;--btnt:#F3EFE4;--red:#b3392c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0A1311;--card:#111E1A;--ink:#EEEAE0;--mut:#9AA39C;--g:#D5B06A;--p:#D5B06A;--au:#D5B06A;--line:#233029;--btnt:#0A1311;--red:#ef8a7d}}
+:root[data-theme=dark]{--bg:#0A1311;--card:#111E1A;--ink:#EEEAE0;--mut:#9AA39C;--g:#D5B06A;--p:#D5B06A;--au:#D5B06A;--line:#233029;--btnt:#0A1311;--red:#ef8a7d}
+*{box-sizing:inherit}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Figtree,system-ui,sans-serif;padding-bottom:40px}
+h1,h2,h3,.logo{font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:-.02em;margin:0}
+button,select,input,textarea{font:inherit}button{cursor:pointer}:focus-visible{outline:3px solid var(--au);outline-offset:2px}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;max-width:980px;margin:auto}
+.logo{font-weight:800;font-size:1.25rem;color:var(--g)}.logo i{font-style:normal;color:var(--au)}
+.btn{border:0;border-radius:999px;padding:8px 14px;font-weight:600;background:var(--p);color:var(--btnt);font-size:.88rem}
+.btn.g{background:var(--g)}.btn.o{background:transparent;border:1.5px solid var(--line);color:var(--ink)}.btn.d{background:transparent;border:1.5px solid var(--red);color:var(--red)}
+h1{font-size:clamp(1.8rem,6vw,2.5rem);margin:4px 0}.sm{color:var(--mut);font-size:.9rem}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}@media(min-width:700px){.stats{grid-template-columns:repeat(4,1fr)}}
+.st{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 16px}.st b{font-family:'Cormorant Garamond';font-size:1.7rem;display:block;line-height:1.1}
+.tabs{display:flex;gap:6px;background:var(--card);border:1px solid var(--line);padding:4px;border-radius:999px;width:fit-content;max-width:100%;overflow-x:auto;margin-bottom:14px}
+.tabs button{border:0;background:none;color:var(--mut);padding:8px 14px;border-radius:999px;font-weight:600;white-space:nowrap}
+.tabs button[aria-selected=true]{background:var(--g);color:var(--btnt)}
+.it{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;margin-bottom:12px}
+.it h3{font-size:1.05rem}.badge{display:inline-block;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--bg);margin:0 6px 4px 0}
+.badge.w{background:color-mix(in srgb,var(--au) 30%,var(--card))}.badge.r{background:color-mix(in srgb,var(--red) 20%,var(--card));color:var(--red)}
+.flags{margin:8px 0;padding:8px 12px;border-left:4px solid var(--au);background:var(--bg);border-radius:8px;font-size:.88rem}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pan{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-top:22px}
+.pr{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}.pr:first-of-type{border-top:0}.pr span{flex:1}
+.pr input{width:110px;padding:8px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.log{font-size:.85rem;color:var(--mut);margin:6px 0;padding-left:0;list-style:none}
+dialog{border:0;border-radius:24px;padding:20px;max-width:480px;width:calc(100% - 24px);background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(10,20,16,.6)}
+textarea,select{width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);margin:8px 0}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:24px;background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:999px;display:none;z-index:50}
+
+h1,h2,h3,.logo,.st b{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+.logo{font-weight:700;font-size:1.65rem;letter-spacing:.01em;color:var(--ink)}
+h1{font-weight:600;letter-spacing:-.01em;font-size:clamp(2.2rem,7vw,3.2rem)}
+header{border-bottom:1px solid var(--line)}
+.btn{border-radius:12px;letter-spacing:.01em}.btn.s{padding:7px 13px}
+.btn.o{border:1px solid var(--line)}
+.st,.row,.it,.pan,.pkc{border-radius:16px}.st b{font-weight:600;font-size:2.2rem}
+.th{border-radius:10px}.badge{border-radius:8px}
+.tabs{border-radius:13px}.tabs button{border-radius:9px}
+.bars div{background:var(--au);border-radius:4px 4px 0 0}
+.av{background:var(--g)}.un{background:var(--au)}
+.flags{border-left-color:var(--au)}
+dialog{border-radius:22px;border:1px solid var(--au)}
+.x{border:1px solid var(--line);background:transparent}
+.btn.d{border:1px solid var(--red);color:var(--red)}
+</style></head><body>
+<header><div class="logo">Khaya<i>.</i>Admin</div><span class="sm">Moderator view</span></header>
+<main class="wrap">
+<h1>Moderation queue</h1><p class="sm">Review before anything goes live. Verification confirms a seller's details, never that a property is legally verified.</p>
+<div class="stats" id="stats"></div>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div id="list"></div>
+<div class="pan"><h3>Package prices</h3><p class="sm">Changes apply to new purchases only. Existing payments keep the price paid.</p><div id="pk"></div></div>
+<div class="pan"><h3>Activity log</h3><ul class="log" id="log"><li>No actions yet this session.</li></ul></div>
+</main>
+<dialog id="dlg"><form method="dialog" id="df"></form></dialog><div id="toast" role="status"></div>
+<script>
+const $=s=>document.querySelector(s),R=n=>'R'+n.toLocaleString('en-ZA');
+let LS=[
+{id:101,t:'4 Bedroom House, Sandton',who:'Estate Agent · Verified agent',p:1850000,why:'New listing',fl:[]},
+{id:102,t:'2 Bedroom Flat, Cape Town',who:'Private owner · Unverified',p:2500,why:'New listing',fl:['Price looks low for the area (R2,500/mo)','Photos also found on another listing']},
+{id:103,t:'3 Bedroom Townhouse, Midrand',who:'Developer · Verified developer',p:1695000,why:'Edited after approval',fl:['Price changed from R1,795,000']}];
+let VR=[{id:201,n:'Thandi Mokoena',lvl:'Verified Owner',docs:'ID and title deed uploaded'},{id:202,n:'Cape Coast Realty',lvl:'Verified Agent',docs:'Business registration and agent credentials uploaded'}];
+let RP=[{id:301,lid:'Sea-view Penthouse, Cape Town',r:'Scam',d:'Seller asked me to pay a deposit before viewing.',n:3},{id:302,lid:'1 Bed Flat, Pretoria',r:'Property unavailable',d:'Told it was let two weeks ago.',n:1}];
+let PKG=[['Standard',99],['Featured',199],['Premium',399]];
+let tab='listings';
+const TB=()=>[['listings','Listings ('+LS.length+')'],['verify','Verification ('+VR.length+')'],['reports','Reports ('+RP.length+')']];
+function stats(){$('#stats').innerHTML=[['Total users','1,284'],['Active listings','342'],['Revenue (30 days)','R48,600'],['Open reports',RP.length]].map(([n,v])=>`<div class="st"><b>${v}</b><span class="sm">${n}</span></div>`).join('')}
+function log(m){const l=$('#log');if(l.firstChild&&l.firstChild.textContent.startsWith('No actions'))l.innerHTML='';l.insertAdjacentHTML('afterbegin','<li>'+new Date().toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit'})+' · '+m+'</li>')}
+function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(e.t);e.t=setTimeout(()=>e.style.display='none',2400)}
+function draw(){stats();$('#tabs').innerHTML=TB().map(([k,n])=>`<button role="tab" aria-selected="${k===tab}" onclick="tab='${k}';draw()">${n}</button>`).join('');
+const empty='<div class="pan" style="text-align:center"><b>All clear</b><p class="sm">Nothing waiting for review.</p></div>';let h='';
+if(tab==='listings')h=LS.map(x=>`<article class="it"><span class="badge ${x.fl.length?'w':''}">${x.why}</span><h3>${x.t}</h3><div class="sm">${R(x.p)} · ${x.who}</div>${x.fl.length?`<div class="flags"><b>Check before approving</b><br>${x.fl.join('<br>')}</div>`:''}
+<div class="acts"><button class="btn g" onclick="act('L',${x.id},'Approved')">Approve</button><button class="btn o" onclick="ask('L',${x.id},'Request info')">Request info</button><button class="btn o" onclick="ask('L',${x.id},'Reject')">Reject</button><button class="btn d" onclick="ask('L',${x.id},'Suspend')">Suspend</button></div></article>`).join('')||empty;
+if(tab==='verify')h=VR.map(x=>`<article class="it"><span class="badge">${x.lvl}</span><h3>${x.n}</h3><div class="sm">${x.docs}</div><div class="acts"><button class="btn g" onclick="act('V',${x.id},'Verified')">Approve</button><button class="btn o" onclick="ask('V',${x.id},'Reject verification')">Reject</button></div></article>`).join('')||empty;
+if(tab==='reports')h=RP.map(x=>`<article class="it"><span class="badge ${x.n>1?'r':'w'}">${x.r}</span>${x.n>1?`<span class="badge r">${x.n} reports</span>`:''}<h3>${x.lid}</h3><div class="sm">“${x.d}”</div><div class="acts"><button class="btn d" onclick="ask('R',${x.id},'Suspend listing')">Suspend listing</button><button class="btn o" onclick="ask('R',${x.id},'Block seller')">Block seller</button><button class="btn o" onclick="act('R',${x.id},'Dismissed')">Dismiss</button></div></article>`).join('')||empty;
+$('#list').innerHTML=h}
+function rm(k,id){if(k==='L')LS=LS.filter(x=>x.id!==id);if(k==='V')VR=VR.filter(x=>x.id!==id);if(k==='R')RP=RP.filter(x=>x.id!==id)}
+function act(k,id,a,note){const t=(k==='L'?LS:k==='V'?VR:RP).find(x=>x.id===id),n=t.t||t.n||t.lid;rm(k,id);log(a+': '+n+(note?' ('+note+')':''));toast(a);draw()}
+function ask(k,id,a){const t=(k==='L'?LS:k==='V'?VR:RP).find(x=>x.id===id);
+$('#df').innerHTML=`<h3>${a}</h3><p class="sm">${t.t||t.n||t.lid}</p><label class="sm" for="nt">${a==='Request info'?'What does the seller need to add?':'Reason (shared with the seller)'}</label><textarea id="nt" rows="3" required></textarea><div class="acts"><button class="btn o" value="x" formnovalidate>Cancel</button><button class="btn" id="ok" value="y">Confirm</button></div>`;
+$('#ok').onclick=e=>{const v=$('#nt').value.trim();if(!v){e.preventDefault();$('#nt').focus();return}act(k,id,a,v);dlg.close()};dlg.showModal()}
+const dlg=$('#dlg');
+$('#pk').innerHTML=PKG.map((p,i)=>`<div class="pr"><span>${p[0]}</span><label class="sm" for="p${i}">Rand</label><input id="p${i}" type="number" min="0" value="${p[1]}" onchange="log('${p[0]} price set to R'+this.value);toast('Price saved')"></div>`).join('');
+draw();
+</script></body></html>
